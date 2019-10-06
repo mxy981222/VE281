@@ -270,7 +270,7 @@ int find_min(int* a, int n) {
 	}
 	return min;
 }
-/*
+
 void bucket_sort(int* a, int n) {
 	//REQUIRE: a is an array, n is the size of a
 	//MODIFY: a
@@ -278,12 +278,36 @@ void bucket_sort(int* a, int n) {
 	int max = find_max(a, n);
 	int min = find_min(a, n);
 	int size = max - min;
-	int num = size / 5;//the number of buckets and step=5
+	int num = size / 5;//the number of buckets and step=5, step can be modified as the length of the array changing
 	if (size % 5 != 0) {
 		num++;
 	}
-	vector<vector<int>> bucket;
-}*/
+	int* count = new int[num] {0};//counter for the elements in every bucket, with initially 0
+	int* temp = new int[n] {0};//a temparary array to save the value
+	int k = 0;
+	for (int i = 0; i < num; i++) {//in order to make the time complexity less than n^2, num should be initially fixed! here we do not care about it. 
+		for (int j = 0; j < n; j++) {
+			if (a[j] >= min + i * 5 && a[j] <= min + i * 5 + 4) {
+				temp[k++] = a[j];
+				count[i]++;
+			}
+		}
+	}
+	int counter = 0;
+	while (counter < n) {
+		for (int i = 0; i < num; i++) {
+			if (count[i] != 0) {
+				quick_sort(temp, counter, counter + count[i]-1);
+				counter += count[i];
+			}
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		a[i] = temp[i];
+	}
+	delete[] count;
+	delete[] temp;
+}
 
 int maxbit(int max) {
 	//REQUIRE: max an integer
