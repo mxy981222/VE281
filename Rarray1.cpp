@@ -3,7 +3,7 @@
 using namespace std;
 int main(){
         srand48(time(0));
-        int method =abs(mrand48() % 5);
+        int method =abs(mrand48() % 2) + 5;
         int length = abs(mrand48() % 40);
         int index = abs(mrand48() % length);
         cout << method << endl;
