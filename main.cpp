@@ -64,6 +64,8 @@ int main() {
 			res = DSelect(a, 0, length - 1, index);
 		}
 		cout << "The order-" << index << " item is " << res << endl;
+		t = clock() - t;
+		cout << (float)t)/CLOCKS_PER_SEC << endl;
 		//cout << joj_select(a, length, res, index) << endl;
 	}
 }
