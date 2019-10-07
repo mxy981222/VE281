@@ -1,5 +1,7 @@
 #include"sort.h"
+#include<time.h>
 using namespace std;
+/*
 bool joj_sort(int* a, int n) {
 	for (int i = 0; i < n - 1; i++) {
 		if (a[i] > a[i + 1]) {
@@ -12,8 +14,9 @@ bool joj_select(int* a, int n, int res, int i) {
 	bubble_sort(a, n);
 	if (res == a[i]) return true;
 	return false;
-}
+}*/
 int main() {
+	clock_t t;
 	int method = 0;
 	cin >> method;
 	int length = 0;
@@ -24,6 +27,7 @@ int main() {
 		for (int i = 0; i < length; i++) {
 			cin >> a[i];
 		}
+		t=clock();
 		if (method == 0) {
 			bubble_sort(a, length);
 		}
@@ -42,7 +46,9 @@ int main() {
 		for (int i = 0; i < length; i++) {
 			cout << a[i] << endl;
 		}
-		cout << joj_sort(a, length) << endl;
+		t = clock() - t;
+		cout << (float)t)/CLOCKS_PER_SEC << endl;
+		//cout << joj_sort(a, length) << endl;
 	}
 	else {
 		int index = 0;
@@ -58,6 +64,6 @@ int main() {
 			res = DSelect(a, 0, length - 1, index);
 		}
 		cout << "The order-" << index << " item is " << res << endl;
-		cout << joj_select(a, length, res, index) << endl;
+		//cout << joj_select(a, length, res, index) << endl;
 	}
 }
