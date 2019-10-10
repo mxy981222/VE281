@@ -68,4 +68,6 @@ int main() {
 		cout << (float)t)/CLOCKS_PER_SEC << endl;
 		//cout << joj_select(a, length, res, index) << endl;
 	}
+        delete[] a;
+        delete[]
 }
